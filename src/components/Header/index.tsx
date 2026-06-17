@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useCart } from '../../contexts/CartContext'
 import {
   HeaderBar,
   LinkItem,
@@ -14,6 +15,7 @@ import Carrinho from '../../assets/images/carrinho.svg'
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { totalItems } = useCart()
 
   return (
     <HeaderBar>
@@ -34,8 +36,8 @@ const Header = () => {
         </nav>
       </LogoGroup>
 
-      <LinkCart href="#">
-        0 - Produto(s)
+      <LinkCart href="/cart">
+        {totalItems} - Produto(s)
         <img src={Carrinho} alt="carrinho" />
       </LinkCart>
 
